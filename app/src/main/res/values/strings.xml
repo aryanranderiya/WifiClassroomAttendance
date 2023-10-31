@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Impromptu SSIP Hackathon 2023</string>
+    <string name="faculty_login">Faculty Login</string>
+    <string name="student_login">Student Login</string>
 </resources>

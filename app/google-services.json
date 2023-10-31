@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1074241626831",
+    "project_id": "impromptu-ssip-hackathon-2023",
+    "storage_bucket": "impromptu-ssip-hackathon-2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074241626831:android:0d2ff16e73c1298654cdba",
+        "android_client_info": {
+          "package_name": "com.example.impromptussiphackathon2023"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8myhc2OmG8ukuELhmi9kNs5kDn5fvXzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
