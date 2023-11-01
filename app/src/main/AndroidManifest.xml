@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ImpromptuSSIPHackathon2023"
         tools:targetApi="31">
         <activity
-            android:name=".AttendanceReportActivity"
+            android:name=".AttendanceSubmitted"
             android:exported="false" />
         <activity
             android:name=".SubmitAttendanceActivity"
