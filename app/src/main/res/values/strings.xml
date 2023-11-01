@@ -11,7 +11,8 @@
         <item>Select Branch:</item>
         <item>Computer Engineering</item>
         <item>Information and Communication Technology</item>
-        <item>Mechanical Engineering</item><item>Civil Engineering</item>
+        <item>Mechanical Engineering</item>
+        <item>Civil Engineering</item>
     </string-array>
 
     <string-array name="division_array">
