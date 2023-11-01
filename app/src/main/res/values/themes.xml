@@ -25,6 +25,8 @@
         <item name="android:padding">5dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">17sp</item>
+        <item name="android:buttonCornerRadius">10dp</item>
+
     </style>
 
     <style name="textInputLayout_style" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
