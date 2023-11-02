@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -19,10 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.firebase.database.ValueEventListener;
 
 public class AttendanceReportActivity extends AppCompatActivity {
@@ -39,7 +36,7 @@ public class AttendanceReportActivity extends AppCompatActivity {
             public void onClick(View view) {
                 databaseReference = FirebaseDatabase.getInstance().getReference().child("session_id_0");
 
-                databaseReference.addValueEventListener(new ValueEventListener() {
+                ValueEventListener valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             String json = dataSnapshot.getValue().toString();
@@ -82,6 +79,7 @@ public class AttendanceReportActivity extends AppCompatActivity {
                             }
                         }
                     }
+
                     public void onCancelled(DatabaseError databaseError) {
                         // Handle errors if data retrieval fails
                     }
