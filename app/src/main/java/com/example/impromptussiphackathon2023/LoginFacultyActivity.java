@@ -1,82 +1,124 @@
 package com.example.impromptussiphackathon2023;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginFacultyActivity extends AppCompatActivity {
+public class LoginFacultyActivity extends AppCompatActivity implements TextWatcher {
 
-    Button btn_login;
-    TextInputLayout edt_loginPassword, edt_loginEmail;
-    String LoginPassword, LoginEmail;
-    Boolean flag=false;
+    private Button loginButton;
+    private TextInputLayout emailInputLayout, passwordInputLayout;
+    private String loginPassword, loginEmail;
+    private FirebaseAuth mAuth;
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_faculty);
 
-        Init();
-        Buttons();
-        Validation();
-        Login();
+        initializeUI();
     }
 
-    private void Login() {
+    private void initializeUI() {
+        loginButton = findViewById(R.id.btn_login);
+        emailInputLayout = findViewById(R.id.edt_loginEmail);
+        passwordInputLayout = findViewById(R.id.edt_loginPassword);
 
-    }
+        emailInputLayout.getEditText().addTextChangedListener(this);
+        passwordInputLayout.getEditText().addTextChangedListener(this);
 
-    private void Validation() {
-        LoginEmail = edt_loginEmail.getEditText().getText().toString();
-        LoginPassword = edt_loginPassword.getEditText().getText().toString();
+        mAuth = FirebaseAuth.getInstance();
 
-        if (edt_loginEmail.hasFocus()) {
-            if (!Patterns.EMAIL_ADDRESS.matcher(LoginEmail).matches() || LoginEmail.isEmpty()) {
-                edt_loginEmail.setError("Please Enter Valid E-Mail Address!");
-            }else {
-                edt_loginEmail.setError(null);
-
-                flag=true;
-            }
-        }
-        else {
-            flag = false;
-        }
-        if (edt_loginPassword.hasFocus()) {
-            if (LoginPassword.isEmpty()) {
-                edt_loginPassword.setError("Password cannot be empty!");
-                flag = false;
-            }else {
-                edt_loginPassword.setError(null);
-                flag=true;
-            }
-        }else {
-            flag = false;
-        }
-    }
-
-
-    private void Init() {
-        btn_login = findViewById(R.id.btn_login);
-        edt_loginEmail = findViewById(R.id.edt_loginEmail);
-        edt_loginPassword = findViewById(R.id.edt_loginPassword);
-    }
-
-    private void Buttons() {
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), TakeAttendaceActivity.class));
-                Toast.makeText(getApplicationContext(),"Welcome Faculty Member!", Toast.LENGTH_SHORT).show();
+                login();
             }
         });
     }
 
+    private void login() {
+        loginEmail = emailInputLayout.getEditText().getText().toString();
+        loginPassword = passwordInputLayout.getEditText().getText().toString();
 
+        if (loginEmail.isEmpty()) {
+            emailInputLayout.setError("Email Cannot be Empty!");
+            return;
+        } else if (loginPassword.isEmpty()) {
+            passwordInputLayout.setError("Password Cannot be Empty!");
+            return;
+        } else if (!isValidEmail(loginEmail)) {
+            emailInputLayout.setError("Invalid Email or not from 'sot.pdpu.ac.in' domain");
+            return;
+        }
+
+        showProgressDialog("Logging in...");
+
+        mAuth.signInWithEmailAndPassword(loginEmail, loginPassword)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(getApplicationContext(), TakeAttendanceActivity.class));
+                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
+                            closeProgressDialog();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            closeProgressDialog();
+                        }
+                    }
+                });
+    }
+
+    private void showProgressDialog(String text) {
+        progressDialog = new ProgressDialog(LoginFacultyActivity.this);
+        progressDialog.setMessage(text);
+        progressDialog.show();
+    }
+
+    private void closeProgressDialog() {
+        progressDialog.dismiss();
+    }
+    private boolean isValidEmail(String email) {
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            String domain = email.substring(email.indexOf('@') + 1);
+            return domain.equals("sot.pdpu.ac.in");
+        }
+        return false;
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        clearErrors();
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        clearErrors();
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        clearErrors();
+    }
+
+    private void clearErrors() {
+        emailInputLayout.setError(null);
+        passwordInputLayout.setError(null);
+    }
 }

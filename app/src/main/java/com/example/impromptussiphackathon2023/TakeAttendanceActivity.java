@@ -5,16 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.Arrays;
-import java.util.List;
-
-public class TakeAttendaceActivity extends AppCompatActivity {
+public class TakeAttendanceActivity extends AppCompatActivity {
     Spinner branchSpinner,groupSpinner,divisionSpinner;
     Button btn_startAttendanceSession;
     String[] branchArray,divisionArray, groupArray;
@@ -35,14 +31,13 @@ public class TakeAttendaceActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), AttendanceReportActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(TakeAttendaceActivity.this, "Please select all three options", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TakeAttendanceActivity.this, "Please select all three options", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     private boolean isSelectionValid() {
-        // Check if all three spinners have valid selections
         return (branchSpinner.getSelectedItemPosition() > 0) &&
                 (groupSpinner.getSelectedItemPosition() > 0) &&
                 (divisionSpinner.getSelectedItemPosition() > 0);
