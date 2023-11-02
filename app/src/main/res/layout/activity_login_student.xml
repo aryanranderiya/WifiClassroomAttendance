@@ -17,7 +17,9 @@
         android:textColor="@color/main_500"
         android:layout_gravity="left"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="25dp"/>
+        android:layout_marginLeft="25dp"
+        android:textStyle="bold"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edt_loginEmail"

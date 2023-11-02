@@ -19,7 +19,7 @@
             android:name=".SubmitAttendanceActivity"
             android:exported="false" />
         <activity
-            android:name=".TakeAttendaceActivity"
+            android:name=".TakeAttendanceActivity"
             android:exported="false" />
         <activity
             android:name=".LoginFacultyActivity"

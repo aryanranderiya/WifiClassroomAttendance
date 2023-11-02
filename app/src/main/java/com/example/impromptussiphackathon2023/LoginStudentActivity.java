@@ -21,7 +21,7 @@ public class LoginStudentActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), TakeAttendaceActivity.class));
+                startActivity(new Intent(getApplicationContext(), TakeAttendanceActivity.class));
                 Toast.makeText(getApplicationContext(), "Welcome Student!", Toast.LENGTH_SHORT).show();
             }
         });
