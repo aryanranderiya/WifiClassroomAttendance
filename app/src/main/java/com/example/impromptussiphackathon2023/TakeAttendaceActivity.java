@@ -24,7 +24,6 @@ public class TakeAttendaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_take_attendace);
 
         Init();
-        SpinnerSelectItem();
         Buttons();
     }
 
@@ -33,7 +32,7 @@ public class TakeAttendaceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isSelectionValid()) {
-                    Intent intent = new Intent(TakeAttendaceActivity.this, AttendanceSubmitted.class);
+                    Intent intent = new Intent(getApplicationContext(), AttendanceReportActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(TakeAttendaceActivity.this, "Please select all three options", Toast.LENGTH_SHORT).show();
@@ -49,10 +48,6 @@ public class TakeAttendaceActivity extends AppCompatActivity {
                 (divisionSpinner.getSelectedItemPosition() > 0);
     }
 
-    private void SpinnerSelectItem() {
-        Boolean submit_btn = false;
-    }
-
     private void Init() {
         branchSpinner = findViewById(R.id.branchSpinner);
         groupSpinner = findViewById(R.id.groupSpinner);
@@ -65,16 +60,17 @@ public class TakeAttendaceActivity extends AppCompatActivity {
         branchSpinner.setAdapter(branchArrayAdapter);
         branchSpinner.setSelection(0, false);
 
-        groupArray = getResources().getStringArray(R.array.group_array);
-        ArrayAdapter<String> groupArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_list, groupArray);
-        groupArrayAdapter.setDropDownViewResource(R.layout.spinner_list);
-        groupSpinner.setAdapter(groupArrayAdapter);
-        groupSpinner.setSelection(0, false);
-
         divisionArray = getResources().getStringArray(R.array.division_array);
         ArrayAdapter<String> divisionArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_list, divisionArray);
         divisionArrayAdapter.setDropDownViewResource(R.layout.spinner_list);
         divisionSpinner.setAdapter(divisionArrayAdapter);
         divisionSpinner.setSelection(0, false);
-    }
+
+
+        groupArray = getResources().getStringArray(R.array.group_array);
+        ArrayAdapter<String> groupArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_list, groupArray);
+        groupArrayAdapter.setDropDownViewResource(R.layout.spinner_list);
+        groupSpinner.setAdapter(groupArrayAdapter);
+        groupSpinner.setSelection(0, false);    }
+
 }
