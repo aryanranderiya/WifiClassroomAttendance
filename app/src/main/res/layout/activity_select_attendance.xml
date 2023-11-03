@@ -40,30 +40,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginVertical="10dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="Your Enrollment:"
-        android:fontFamily="serif"
-        android:textSize="25sp"
-        android:textStyle="bold|italic"
-        android:layout_marginHorizontal="10dp"
-        android:layout_weight="0"
-        android:drawableStart="@drawable/user"/>
+        android:layout_marginVertical="10dp"
+        android:gravity="center">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/user"
+            android:drawablePadding="10dp"
+            android:fontFamily="serif"
+            android:gravity="center|end"
+            android:text="Enrollment :"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="10dp"
             android:fontFamily="serif"
             android:text="22BCP486D"
             android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold|italic"
-            android:layout_weight="0" />
+            android:textSize="20sp"
+            android:gravity="center|start"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,26 +76,29 @@
         android:layout_marginVertical="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Lecture Name:"
-            android:fontFamily="serif"
-            android:textSize="25sp"
-            android:textStyle="bold|italic"
-            android:layout_marginHorizontal="10dp"
-            android:layout_weight="0" />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/baseline_menu_book_24"
+            android:drawablePadding="10dp"
+            android:fontFamily="serif"
+            android:gravity="center|end"
+            android:text="Lecture :"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginHorizontal="10dp"
             android:fontFamily="serif"
             android:text="Data Structure"
             android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold|italic"
-            android:layout_weight="1" />
+            android:textSize="20sp"
+            android:gravity="center|start"
+            android:layout_weight="1"
+            />
     </LinearLayout>
 
     <Button
