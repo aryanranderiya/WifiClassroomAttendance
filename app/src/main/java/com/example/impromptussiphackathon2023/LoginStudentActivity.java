@@ -31,15 +31,7 @@ public class LoginStudentActivity extends AppCompatActivity implements TextWatch
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_student);
 
-        loginButton = findViewById(R.id.btn_login);
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), SubmitAttendanceActivity.class));
-                Toast.makeText(getApplicationContext(), "Welcome Student!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        init();
     }
 
 

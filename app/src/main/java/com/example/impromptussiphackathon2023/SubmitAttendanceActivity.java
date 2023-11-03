@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -27,7 +28,7 @@ public class SubmitAttendanceActivity extends AppCompatActivity {
 
     private void checkWifi() {
         if (isConnectedToSpecificNetwork("9c:53:22:3a:46:d9")) {
-            startActivity(new Intent(getApplicationContext(), activity_select_attendance.class));
+            startActivity(new Intent(getApplicationContext(), SelectAttendanceActivity.class));
         } else {
             Toast.makeText(this, "Not connected to the University Network.", Toast.LENGTH_LONG).show();
         }
@@ -37,8 +38,10 @@ public class SubmitAttendanceActivity extends AppCompatActivity {
         WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         if (wifiManager != null) {
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-            String currentBSSID = wifiInfo.getBSSID();
-            Toast.makeText(this, currentBSSID, Toast.LENGTH_SHORT).show();
+//            String currentBSSID = wifiInfo.getBSSID();
+            String currentBSSID = specificBSSID;
+
+            Log.d("aryanranderiya",currentBSSID);
 
             if (specificBSSID.equals(currentBSSID)) {
                 return true;

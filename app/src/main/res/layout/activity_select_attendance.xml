@@ -1,37 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginVertical="5dp"
-    android:layout_marginHorizontal="3dp"
-    tools:context=".activity_select_attendance">
+    android:padding="20dp"
+    android:gravity="center"
+    android:background="#00bbff">
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="25dp"
+    app:cardBackgroundColor="#FFFFFF"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp">
+
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".SelectAttendanceActivity"
+    android:layout_gravity="center"
+    >
 
 
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text=" Saturday,4 Nov"
-        android:fontFamily="serif"
-        android:textSize="40sp"
-        android:textStyle="bold|italic"
-        android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="10dp"
-        android:drawableStart="@drawable/calendar"/>
-
-    <TextView
-        android:layout_width="match_parent"
+        app:cardCornerRadius="25dp"
+        app:cardBackgroundColor="#E1E1E1"
+        android:layout_gravity="center">
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="  5:00 PM - 6:00 PM"
-        android:fontFamily="serif"
-        android:textSize="25sp"
-        android:textStyle="bold|italic"
-        android:layout_marginHorizontal="10dp"
-        android:drawableStart="@drawable/time"/>
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text=" Saturday,4 Nov"
+            android:fontFamily="serif"
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:drawableStart="@drawable/calendar"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="  5:00 PM - 6:00 PM"
+            android:fontFamily="serif"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:drawableStart="@drawable/time"/>
+</LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -40,17 +79,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginVertical="10dp"
         android:gravity="center">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
             android:layout_weight="1"
             android:drawableStart="@drawable/user"
             android:drawablePadding="10dp"
-            android:fontFamily="serif"
+            android:fontFamily="sans-serif"
             android:gravity="center|end"
             android:text="Enrollment :"
             android:textColor="@color/black"
@@ -60,61 +97,68 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="10dp"
-            android:fontFamily="serif"
-            android:text="22BCP486D"
+            android:fontFamily="sans-serif"
+            android:text="22BCP469D"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:gravity="center|start"
-            android:layout_weight="1" />
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center"
         android:layout_marginVertical="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
             android:layout_weight="1"
             android:drawableStart="@drawable/baseline_menu_book_24"
-            android:drawablePadding="10dp"
-            android:fontFamily="serif"
+            android:drawablePadding="15dp"
+            android:fontFamily="sans-serif"
             android:gravity="center|end"
-            android:text="Lecture :"
+            android:text="Subject :"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="10dp"
-            android:fontFamily="serif"
-            android:text="Data Structure"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Data Structures"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:gravity="center|start"
             android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
             />
     </LinearLayout>
 
+
+</LinearLayout>
+
+</androidx.cardview.widget.CardView>
     <Button
         android:id="@+id/btn_login"
         style="@style/button_style"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="25dp"
-        android:backgroundTint="@color/green"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="70dp"
+        android:backgroundTint="@color/white"
         android:drawableEnd="@drawable/hand_raise"
-        android:drawableTint="@color/white"
+        android:drawableTint="@color/black"
+        android:textColor="@color/black"
         android:text="Present"
-        android:padding="15dp"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:textStyle="bold"
+
         />
-
-
 </LinearLayout>

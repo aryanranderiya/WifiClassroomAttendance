@@ -2,13 +2,17 @@
 
 <ScrollView    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    >
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:gravity="center">
 
 
     <ImageView
@@ -36,15 +40,6 @@
         />
 
     <Spinner
-        android:id="@+id/groupSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:padding="10dp"
-        android:background="@drawable/style_spinner"
-        />
-
-    <Spinner
         android:id="@+id/divisionSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,6 +48,14 @@
         android:background="@drawable/style_spinner"
         />
 
+    <Spinner
+        android:id="@+id/groupSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:padding="10dp"
+        android:background="@drawable/style_spinner"
+        />
 
     <Button
         android:id="@+id/btn_startAttendanceSession"
