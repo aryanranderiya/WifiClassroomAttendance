@@ -14,6 +14,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.poi.ss.formula.functions.Column;
@@ -31,6 +32,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -44,6 +46,7 @@ public class AttendanceReportActivity extends AppCompatActivity{
     private FirebaseDatabase firebaseDatabase;
     private static Sheet sheet;
     static private int rowNum;
+    private TextView text_absent_number, text_present_number,text_students_number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,11 +80,15 @@ public class AttendanceReportActivity extends AppCompatActivity{
     }
 
     private void Init() {
+        myButton = findViewById(R.id.download);
+        text_absent_number = findViewById(R.id.text_absent_number);
+        text_present_number = findViewById(R.id.text_present_number);
+        text_students_number = findViewById(R.id.text_students_number);
+
         progressDialog = new ProgressDialog(AttendanceReportActivity.this);
         progressDialog.setTitle("Creating Excel File...");
         progressDialog.setCancelable(false);
         sdf = new SimpleDateFormat("dd MM yyyy HH:mm", Locale.US);
-        myButton = findViewById(R.id.download);
         firebaseDatabase = FirebaseDatabase.getInstance();
 
     }
@@ -113,7 +120,7 @@ public class AttendanceReportActivity extends AppCompatActivity{
                         File file = new File(downloadDir, "AttendanceReport_" + formattedDateTime + ".xlsx");
                         Workbook workbook = new XSSFWorkbook();
                         sheet = workbook.createSheet("Data");
-
+                        sheet.setDefaultColumnWidth(24);
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.child("AttendanceReport").child("session_id_0").getChildren()) {
                             Row subjectInfoRow = sheet.createRow(rowNum++);
                             String key = dataSnapshot1.getKey();

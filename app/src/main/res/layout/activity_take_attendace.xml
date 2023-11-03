@@ -14,7 +14,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:src="@drawable/attendance" />
+        android:src="@drawable/image_attendance_two" />
 
     <TextView
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
         android:layout_marginVertical="20dp"
         android:textSize="17dp"
         android:textAllCaps="false"
-        android:background="@drawable/button_style"/>
+        android:background="@drawable/style_button"/>
 
 </LinearLayout>
 

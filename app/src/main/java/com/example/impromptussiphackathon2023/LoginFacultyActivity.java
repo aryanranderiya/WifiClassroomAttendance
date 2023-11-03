@@ -31,10 +31,10 @@ public class LoginFacultyActivity extends AppCompatActivity implements TextWatch
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_faculty);
 
-        initializeUI();
+        init();
     }
 
-    private void initializeUI() {
+    private void init() {
         loginButton = findViewById(R.id.btn_login);
         emailInputLayout = findViewById(R.id.edt_loginEmail);
         passwordInputLayout = findViewById(R.id.edt_loginPassword);
