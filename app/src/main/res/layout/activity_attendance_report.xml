@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AttendanceReportActivity"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/white"
-    android:padding="30dp">
-
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AttendanceReportActivity"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:padding="30dp"
+        android:layout_marginTop="20dp">
 
     <TextView
         android:id="@+id/heading"
@@ -30,33 +28,51 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@drawable/attendance_report" />
+        android:src="@drawable/image_attendance_one" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="20dp">
 
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:padding="10dp">
         <TextView
-            android:id="@+id/total"
+            android:id="@+id/text_students"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/lecture"
+            android:drawableTop="@drawable/icon_school"
             android:drawableTint="@color/purple_200"
             android:drawablePadding="15dp"
-
             android:ems="10"
-            android:padding="10dp"
-            android:text="Students \n58"
+            android:text="Students"
             android:textAlignment="center"
             android:textColor="@color/purple_200"
             android:textSize="20sp"
             android:textStyle="bold" />
-
+            <TextView
+                android:id="@+id/text_students_number"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:text="50"
+                android:textAlignment="center"
+                android:textColor="@color/purple_200"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:padding="10dp">
         <TextView
-            android:id="@+id/present"
+            android:id="@+id/text_present"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:baselineAligned="false"
@@ -64,30 +80,54 @@
             android:drawablePadding="15dp"
             android:drawableTint="@color/green"
             android:ems="10"
-            android:text="Present\n39"
+            android:text="Present"
             android:textAlignment="center"
             android:textColor="@color/green"
             android:textSize="20sp"
             android:textStyle="bold"
+            />
+            <TextView
+                android:id="@+id/text_present_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="30"
+                android:textAlignment="center"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:padding="10dp"/>
-
+            android:padding="10dp">
         <TextView
-            android:id="@+id/absent"
+            android:id="@+id/text_absent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/icon_absent"
             android:drawablePadding="15dp"
             android:drawableTint="@color/red_full"
             android:ems="10"
-            android:text="Absent \n19"
+            android:text="Absent"
             android:textAlignment="center"
             android:textColor="@color/red_full"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:padding="10dp"/>
-
+            android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/text_absent_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="10"
+                android:textAlignment="center"
+                android:textColor="@color/red_full"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
     <Button
@@ -97,7 +137,7 @@
         android:textAlignment="center"
         android:text="Download Report"
         android:layout_marginHorizontal="50dp"
-        android:background="@drawable/button_style"
+        android:background="@drawable/style_button"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:textSize="20sp"
@@ -110,9 +150,8 @@
         android:textAlignment="center"
         android:layout_marginHorizontal="50dp"
         android:text="Finish"
-        android:background="@drawable/button_style"
+        android:background="@drawable/style_button"
         android:textSize="20sp"
         android:textAllCaps="false"/>
 
 </LinearLayout>
-</ScrollView>

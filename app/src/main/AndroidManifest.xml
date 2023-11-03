@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,24 +16,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImpromptuSSIPHackathon2023"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".activity_select_attendance"
-            android:exported="true"
-            android:label="@string/title_activity_select_attendance"
-            android:theme="@style/Theme.ImpromptuSSIPHackathon2023" >
+            android:name=".AttendanceSubmitted"
+            android:exported="false" />
+        <activity
+            android:name=".SubmitAttendanceActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AttendanceSubmitted"
-            android:exported="false" />
-        <activity
-            android:name=".SubmitAttendanceActivity"
-            android:exported="false" />
+
         <activity
             android:name=".TakeAttendanceActivity"
             android:exported="false" />
@@ -43,12 +41,12 @@
             android:exported="false" />
         <activity
             android:name=".AttendanceReportActivity"
-            android:exported="false" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true">
 
         </activity>
     </application>
-
 </manifest>

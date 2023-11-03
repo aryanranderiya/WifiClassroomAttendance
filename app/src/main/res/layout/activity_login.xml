@@ -21,7 +21,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="370dp"
-        android:src="@drawable/home_page" />
+        android:src="@drawable/image_home_page" />
 
     <Button
         android:id="@+id/btn_login_to_student"
@@ -30,7 +30,7 @@
         android:text="@string/student_login"
         android:layout_margin="10dp"
         android:padding="13dp"
-        android:background="@drawable/button_style"
+        android:background="@drawable/style_button"
         />
     <Button
         android:id="@+id/btn_login_to_faculty"
@@ -39,6 +39,6 @@
         android:text="@string/faculty_login"
         android:layout_margin="10dp"
         android:padding="13dp"
-        android:background="@drawable/button_style"
+        android:background="@drawable/style_button"
         />
 </LinearLayout>

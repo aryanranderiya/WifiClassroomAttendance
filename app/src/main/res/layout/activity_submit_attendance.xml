@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SubmitAttendanceActivity">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".SubmitAttendanceActivity"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_error"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_wifi_bad"
+            android:layout_weight="1"/>
+    </LinearLayout>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Attendance Session has not been started yet, or you are not connected to the University Wifi Network!"
+    android:textStyle="bold"
+    android:textSize="20dp"
+    android:layout_margin="20dp"
+    android:textColor="#b3b3b3"
+    android:textAlignment="center"/>
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:layout_gravity="center"
+        android:drawableEnd="@drawable/icon_logout"
+        android:drawableTint="@color/black"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:padding="10dp"
+        android:drawablePadding="10dp"
+        android:backgroundTint="#b3b3b3"/>
+</LinearLayout>
