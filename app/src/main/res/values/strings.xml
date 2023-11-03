@@ -20,7 +20,7 @@
     <string-array name="division_array">
         <item>Select Division: ‎ ‎ ‎ ‎ ‎ ‎‎ ‎‎‎‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎
             ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎
-            ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ▼</item>
+            ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ▼</item>
         <item>Div - 1</item>
         <item>Div - 2</item>
         <item>Div - 3</item>
@@ -32,7 +32,7 @@
     <string-array name="group_array">
         <item>Select Group: ‎ ‎ ‎ ‎ ‎ ‎‎ ‎‎‎‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎
             ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎
-            ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ▼</item>
+            ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎  ▼</item>
         <item>Group 1</item>
         <item>Group 2</item>
         <item>Group 3</item>
