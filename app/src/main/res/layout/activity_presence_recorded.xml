@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="3dp"
+    tools:context=".activity_presence_recorded">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/submitted" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="Your presence has been recorded!"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/show_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Show Attendance Report"
+        android:layout_marginHorizontal="50dp"
+        android:background="@drawable/style_button"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Exit"
+        android:layout_marginHorizontal="50dp"
+        android:background="@drawable/style_button"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        />
+</LinearLayout>
