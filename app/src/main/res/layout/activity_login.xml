@@ -21,7 +21,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="370dp"
-        android:src="@drawable/home_page" />
+        android:src="@drawable/image_home_page" />
 
     <Button
         android:id="@+id/btn_login_to_student"
