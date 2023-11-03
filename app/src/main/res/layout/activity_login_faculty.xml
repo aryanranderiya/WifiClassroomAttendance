@@ -9,16 +9,21 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:src="@drawable/login_screen"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Faculty Login"
-        android:textSize="35sp"
+        android:fontFamily="cursive"
+        android:textAlignment="center"
         android:textColor="@color/main_500"
-        android:layout_gravity="left"
-        android:textStyle="bold"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="25dp"/>
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edt_loginEmail"
@@ -76,7 +81,6 @@
         android:layout_marginRight="25dp"
         android:text="Login"
         style="@style/button_style"
-        app:backgroundTint="@null"
-        android:background="#00bbff"
+        android:background="@drawable/button_style"
         />
 </LinearLayout>
