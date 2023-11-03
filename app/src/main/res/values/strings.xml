@@ -8,7 +8,9 @@
     <string name="start_attendance_session">Start Attendance Session</string>
 
     <string-array name="branch_array">
-        <item>Select Branch:</item>
+        <item>Select Branch: ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎
+            ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎
+            ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎  ▼</item>
         <item>Computer Engineering</item>
         <item>Information and Communication Technology</item>
         <item>Mechanical Engineering</item>
@@ -16,7 +18,9 @@
     </string-array>
 
     <string-array name="division_array">
-        <item>Select Division:</item>
+        <item>Select Division: ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎
+            ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎
+            ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎  ▼</item>
         <item>Div - 1</item>
         <item>Div - 2</item>
         <item>Div - 3</item>
@@ -26,7 +30,9 @@
     </string-array>
 
     <string-array name="group_array">
-        <item>Select Group:</item>
+        <item>Select Group: ‎ ‎ ‎ ‎ ‎ ‎‎ ‎‎‎‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎
+            ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎
+            ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎  ▼</item>
         <item>Group 1</item>
         <item>Group 2</item>
         <item>Group 3</item>

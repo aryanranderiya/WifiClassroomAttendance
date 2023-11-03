@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text="@string/student_login"
         android:layout_margin="10dp"
-        android:padding="15dp"
+        android:padding="13dp"
+        android:background="@drawable/button_style"
         />
     <Button
         android:id="@+id/btn_login_to_faculty"
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:text="@string/faculty_login"
         android:layout_margin="10dp"
-        android:padding="15dp"
+        android:padding="13dp"
+        android:background="@drawable/button_style"
         />
 </LinearLayout>

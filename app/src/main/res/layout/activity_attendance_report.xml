@@ -9,70 +9,82 @@
     android:gravity="center"
     android:background="@color/white"
     android:padding="30dp">
+
+
     <TextView
         android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:text="Attendance Report"
-        android:textSize="35sp"
-        android:textAlignment="center"
         android:layout_marginBottom="20dp"
-        />
+        android:ems="10"
+        android:text="Attendance Report"
+        android:fontFamily="cursive"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/attendance_report" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginVertical="15dp">
+        android:layout_marginBottom="20dp">
+
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/lecture"
+            android:drawableTint="@color/purple_200"
+            android:drawablePadding="15dp"
+
+            android:ems="10"
+            android:padding="10dp"
+            android:text="Lectures \n58"
+            android:textAlignment="center"
+            android:textColor="@color/purple_200"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/present"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:text="40 Students Present"
-            android:textStyle="bold"
-            android:textColor="@color/green"
-            android:drawableStart="@drawable/icon_present"
-            android:drawableTint="@color/green"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:drawableTop="@drawable/icon_present"
             android:drawablePadding="15dp"
-            android:textSize="25sp"/>
-    </LinearLayout>
+            android:drawableTint="@color/green"
+            android:ems="10"
+            android:text="Present\n39"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:padding="10dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginVertical="15dp">
         <TextView
             android:id="@+id/absent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:textStyle="bold"
-            android:textColor="@color/red_full"
-            android:text="10 Students Absent"
-            android:drawableStart="@drawable/icon_absent"
-            android:drawableTint="@color/red_full"
+            android:drawableTop="@drawable/icon_absent"
             android:drawablePadding="15dp"
-            android:textSize="25sp"/>
-    </LinearLayout>
+            android:drawableTint="@color/red_full"
+            android:ems="10"
+            android:text="Absent \n19"
+            android:textAlignment="center"
+            android:textColor="@color/red_full"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:padding="10dp"/>
 
-    <TextView
-        android:id="@+id/total"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="Total:50"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:layout_marginVertical="15dp"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/download"
@@ -81,12 +93,12 @@
         android:textAlignment="center"
         android:text="Download Report"
         android:layout_marginHorizontal="50dp"
-        android:background="#00bbff"
+        android:background="@drawable/button_style"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:textSize="20sp"
         android:textAllCaps="false"
-       />
+        />
 
     <Button
         android:layout_width="match_parent"
@@ -94,7 +106,7 @@
         android:textAlignment="center"
         android:layout_marginHorizontal="50dp"
         android:text="Finish"
-        android:background="#00bbff"
+        android:background="@drawable/button_style"
         android:textSize="20sp"
         android:textAllCaps="false"/>
 
