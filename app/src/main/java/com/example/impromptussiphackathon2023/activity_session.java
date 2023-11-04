@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-//import com.bumptech.glide.Glide;
+import com.bumptech.glide.Glide;
 
 public class activity_session extends AppCompatActivity {
     String branch, division, group, subject;
@@ -34,7 +34,7 @@ public class activity_session extends AppCompatActivity {
 
         Button btn = findViewById(R.id.end_session);
 
-//        Glide.with(this).asGif().load(R.drawable.loading).into(gifImageView);
+        Glide.with(this).asGif().load(R.drawable.loading).into(gifImageView);
         Intent intent = getIntent();
         if (intent != null) {
             branch = intent.getStringExtra("branch");

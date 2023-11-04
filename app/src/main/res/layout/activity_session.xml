@@ -9,7 +9,7 @@
     tools:context=".activity_session"
     android:background="@color/white">
 
-    <ImageView
+     <ImageView
         android:id="@+id/loading1"
         android:layout_width="match_parent"
         android:layout_height="300dp"
