@@ -1,5 +1,7 @@
 package com.example.impromptussiphackathon2023;
 
+import static java.lang.Thread.sleep;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -27,6 +29,11 @@ public class SubmitAttendanceActivity extends AppCompatActivity {
     }
 
     private void checkWifi() {
+        try {
+            sleep(3);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         if (isConnectedToSpecificNetwork("9c:53:22:3a:46:d9")) {
             startActivity(new Intent(getApplicationContext(), SelectAttendanceActivity.class));
         } else {
@@ -39,7 +46,7 @@ public class SubmitAttendanceActivity extends AppCompatActivity {
         if (wifiManager != null) {
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
 //            String currentBSSID = wifiInfo.getBSSID();
-            String currentBSSID = specificBSSID;
+            String currentBSSID = specificBSSID; // temporary assign the current to the specific BSSID
 
             Log.d("aryanranderiya",currentBSSID);
 

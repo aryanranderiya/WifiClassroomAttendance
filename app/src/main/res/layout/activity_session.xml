@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="10dp"
     android:orientation="vertical"
-    android:layout_marginVertical="10dp"
     android:gravity="center"
-    tools:context=".activity_session">
+    tools:context=".activity_session"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/loading1"

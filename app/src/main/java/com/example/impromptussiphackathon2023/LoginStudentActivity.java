@@ -75,7 +75,7 @@ public class LoginStudentActivity extends AppCompatActivity implements TextWatch
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(getApplicationContext(), TakeAttendanceActivity.class));
+                            startActivity(new Intent(getApplicationContext(), SubmitAttendanceActivity.class));
                             Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
                             closeProgressDialog();
                         } else {

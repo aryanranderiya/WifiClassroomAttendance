@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
@@ -21,6 +22,8 @@ import org.apache.poi.ss.formula.functions.Column;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -121,7 +124,11 @@ public class AttendanceReportActivity extends AppCompatActivity{
                         Workbook workbook = new XSSFWorkbook();
                         sheet = workbook.createSheet("Data");
                         sheet.setDefaultColumnWidth(24);
-                        for (DataSnapshot dataSnapshot1 : dataSnapshot.child("AttendanceReport").child("session_id_0").getChildren()) {
+
+                        Intent intent = getIntent();
+                        String sessionId = intent.getStringExtra("sessionId");
+
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.child("AttendanceReport").child(sessionId).getChildren()) {
                             Row subjectInfoRow = sheet.createRow(rowNum++);
                             String key = dataSnapshot1.getKey();
                             String value = dataSnapshot1.getValue().toString();
@@ -154,9 +161,13 @@ public class AttendanceReportActivity extends AppCompatActivity{
 
                             String attendanceStatus = dataSnapshot.child("Students").child(enrollmentNo)
                                     .child("Attendance")
-                                    .child("session_id_0")
+                                    .child(sessionId)
                                     .getValue(String.class);
 
+                            if(attendanceStatus == null || attendanceStatus.equals("")){
+                                attendanceStatus = "A";
+                                setAbsent(enrollmentNo,sessionId);
+                            }
                             studentRow.createCell(5).setCellValue(attendanceStatus);
                         }
 
@@ -181,6 +192,35 @@ public class AttendanceReportActivity extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(), "Firebase Data retrieval error", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
+    private void setAbsent(String enrollmentNo, String sessionId) {
+        DatabaseReference studentsReference = firebaseDatabase.getReference().child("Students")
+                .child(enrollmentNo)
+                .child("Attendance")
+                .child(sessionId);
+
+        studentsReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()) {
+                    studentsReference.setValue("A")
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        System.out.println("Successfully set record to Absent");
+                                    } else {
+                                        System.out.println("Could not set record to Absent");
+                                    }
+                                }
+                            });
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
 }

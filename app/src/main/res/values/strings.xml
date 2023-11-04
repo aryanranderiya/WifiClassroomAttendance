@@ -46,6 +46,18 @@
         <item>Group 11</item>
         <item>Group 12</item>
     </string-array>
+
+    <string-array name="subject_array">
+        <item>Select Subject: ‎ ‎ ‎ ‎ ‎ ‎‎ ‎‎‎‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎
+            ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎
+            ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎   ▼</item>
+        <item>Java</item>
+        <item>Python</item>
+        <item>C++</item>
+        <item>C</item>
+        <item>Data Structures</item>
+    </string-array>
+
     <string name="title_activity_select_attendance">activity_select_attendance</string>
 
 </resources>

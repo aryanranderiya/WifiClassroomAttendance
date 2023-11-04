@@ -11,9 +11,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class TakeAttendanceActivity extends AppCompatActivity {
-    Spinner branchSpinner,groupSpinner,divisionSpinner;
+    Spinner branchSpinner,groupSpinner,divisionSpinner,subjectSpinner;
     Button btn_startAttendanceSession;
-    String[] branchArray,divisionArray, groupArray;
+    String[] branchArray,divisionArray, groupArray, subjectArray;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,19 @@ public class TakeAttendanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isSelectionValid()) {
+
+                    String selectedBranch = branchSpinner.getSelectedItem().toString();
+                    String selectedDivision = divisionSpinner.getSelectedItem().toString();
+                    String selectedGroup = groupSpinner.getSelectedItem().toString();
+                    String selectedSubject = subjectSpinner.getSelectedItem().toString();
+
                     Intent intent = new Intent(getApplicationContext(), activity_session.class);
+
+                    intent.putExtra("branch", selectedBranch);
+                    intent.putExtra("division", selectedDivision);
+                    intent.putExtra("group", selectedGroup);
+                    intent.putExtra("subject", selectedSubject);
+
                     startActivity(intent);
                 } else {
                     Toast.makeText(TakeAttendanceActivity.this, "Please select all three options", Toast.LENGTH_SHORT).show();
@@ -39,6 +52,7 @@ public class TakeAttendanceActivity extends AppCompatActivity {
 
     private boolean isSelectionValid() {
         return (branchSpinner.getSelectedItemPosition() > 0) &&
+                (subjectSpinner.getSelectedItemPosition() > 0) &&
                 (groupSpinner.getSelectedItemPosition() > 0) &&
                 (divisionSpinner.getSelectedItemPosition() > 0);
     }
@@ -47,6 +61,8 @@ public class TakeAttendanceActivity extends AppCompatActivity {
         branchSpinner = findViewById(R.id.branchSpinner);
         groupSpinner = findViewById(R.id.groupSpinner);
         divisionSpinner = findViewById(R.id.divisionSpinner);
+        subjectSpinner = findViewById(R.id.subjectSpinner);
+
         btn_startAttendanceSession = findViewById(R.id.btn_startAttendanceSession);
         
         branchArray = getResources().getStringArray(R.array.branch_array);
@@ -61,11 +77,17 @@ public class TakeAttendanceActivity extends AppCompatActivity {
         divisionSpinner.setAdapter(divisionArrayAdapter);
         divisionSpinner.setSelection(0, false);
 
-
         groupArray = getResources().getStringArray(R.array.group_array);
         ArrayAdapter<String> groupArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_list, groupArray);
         groupArrayAdapter.setDropDownViewResource(R.layout.spinner_list);
         groupSpinner.setAdapter(groupArrayAdapter);
-        groupSpinner.setSelection(0, false);    }
+        groupSpinner.setSelection(0, false);
+
+        subjectArray = getResources().getStringArray(R.array.subject_array);
+        ArrayAdapter<String> subjectArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_list, subjectArray);
+        subjectArrayAdapter.setDropDownViewResource(R.layout.spinner_list);
+        subjectSpinner.setAdapter(subjectArrayAdapter);
+        subjectSpinner.setSelection(0, false);
+    }
 
 }
