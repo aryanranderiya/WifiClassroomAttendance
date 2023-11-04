@@ -29,7 +29,19 @@ public class TakeAttendanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isSelectionValid()) {
+
+                    String selectedBranch = branchSpinner.getSelectedItem().toString();
+                    String selectedDivision = divisionSpinner.getSelectedItem().toString();
+                    String selectedGroup = groupSpinner.getSelectedItem().toString();
+                    String selectedSubject = subjectSpinner.getSelectedItem().toString();
+
                     Intent intent = new Intent(getApplicationContext(), activity_session.class);
+
+                    intent.putExtra("branch", selectedBranch);
+                    intent.putExtra("division", selectedDivision);
+                    intent.putExtra("group", selectedGroup);
+                    intent.putExtra("subject", selectedSubject);
+
                     startActivity(intent);
                 } else {
                     Toast.makeText(TakeAttendanceActivity.this, "Please select all three options", Toast.LENGTH_SHORT).show();
