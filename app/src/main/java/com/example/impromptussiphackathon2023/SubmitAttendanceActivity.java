@@ -46,7 +46,7 @@ public class SubmitAttendanceActivity extends AppCompatActivity {
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             String currentBSSID = wifiInfo.getBSSID();
 
-            Log.d("aryanranderiya",currentBSSID);
+            Log.d("aryanranderiya","fetched BSSID of phone: "+currentBSSID);
 
             if (specificBSSID.equals(currentBSSID)) {
                 return true;

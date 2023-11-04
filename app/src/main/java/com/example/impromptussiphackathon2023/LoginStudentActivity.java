@@ -1,31 +1,41 @@
 package com.example.impromptussiphackathon2023;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings.Secure;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginStudentActivity extends AppCompatActivity implements TextWatcher {
 
-    private Button loginButton;
     private TextInputLayout emailInputLayout, passwordInputLayout;
-    private String loginPassword, loginEmail;
+    private String loginEmail;
     private FirebaseAuth mAuth;
     ProgressDialog progressDialog;
+    private DatabaseReference studentsRef;
+    private String enrollmentNo;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +46,7 @@ public class LoginStudentActivity extends AppCompatActivity implements TextWatch
 
 
     private void init() {
-        loginButton = findViewById(R.id.btn_login);
+        Button loginButton = findViewById(R.id.btn_login);
         emailInputLayout = findViewById(R.id.edt_loginEmail);
         passwordInputLayout = findViewById(R.id.edt_loginPassword);
 
@@ -44,6 +54,7 @@ public class LoginStudentActivity extends AppCompatActivity implements TextWatch
         passwordInputLayout.getEditText().addTextChangedListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+        studentsRef = FirebaseDatabase.getInstance().getReference("Students");
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +66,7 @@ public class LoginStudentActivity extends AppCompatActivity implements TextWatch
 
     private void login() {
         loginEmail = emailInputLayout.getEditText().getText().toString();
-        loginPassword = passwordInputLayout.getEditText().getText().toString();
+        String loginPassword = passwordInputLayout.getEditText().getText().toString();
 
         if (loginEmail.isEmpty()) {
             emailInputLayout.setError("Email Cannot be Empty!");
@@ -75,9 +86,8 @@ public class LoginStudentActivity extends AppCompatActivity implements TextWatch
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(getApplicationContext(), SubmitAttendanceActivity.class));
-                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
-                            closeProgressDialog();
+                            Log.d("aryanranderiya","login email "+loginEmail);
+                            searchEnrollment();
                         } else {
                             Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
                             closeProgressDialog();
@@ -85,6 +95,70 @@ public class LoginStudentActivity extends AppCompatActivity implements TextWatch
                     }
                 });
     }
+
+
+    private void searchEnrollment() {
+        studentsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot studentSnapshot : dataSnapshot.getChildren()) {
+                    String studentEmail = studentSnapshot.child("student_email").getValue(String.class);
+                    if (studentEmail != null && studentEmail.equals(loginEmail)) {
+                        enrollmentNo = studentSnapshot.getKey();
+                        String hardwareAddress = fetchUniqueHardwareID();
+                        storeMacAddressInFirebase(enrollmentNo, hardwareAddress);
+                        Log.d("aryanranderiya","uniqueID: "+hardwareAddress);
+                        return;
+                    }
+                }
+                Toast.makeText(getApplicationContext(), "Email not found.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                closeProgressDialog();
+            }
+        });
+    }
+
+    private String fetchUniqueHardwareID() {
+//        WifiManager manager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+//        if (manager != null) {
+//            WifiInfo info = manager.getConnectionInfo();
+//            return info.getMacAddress();
+//        }
+//        return null;
+        return Secure.getString(getContentResolver(), Secure.ANDROID_ID);
+    }
+
+    private void storeMacAddressInFirebase(String enrollmentNo, String macAddress) {
+        DatabaseReference enrollmentRef = studentsRef.child(enrollmentNo);
+
+        enrollmentRef.child("hardware_id").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String existingHardwareId = dataSnapshot.getValue(String.class);
+                if (existingHardwareId == null) {
+                    enrollmentRef.child("hardware_id").setValue(macAddress);
+                    startActivity(new Intent(getApplicationContext(), SubmitAttendanceActivity.class));
+                    Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
+                    closeProgressDialog();
+                }
+                else{
+                    if(macAddress!=existingHardwareId){
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(LoginStudentActivity.this, "Cannot login on another device!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
 
     private void showProgressDialog(String text) {
         progressDialog = new ProgressDialog(LoginStudentActivity.this);
