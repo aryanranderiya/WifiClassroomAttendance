@@ -1,10 +1,14 @@
 package com.example.impromptussiphackathon2023;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -18,14 +22,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginFacultyActivity extends AppCompatActivity implements TextWatcher {
 
     private Button loginButton;
+    private ProgressDialog progressDialog;
     private TextInputLayout emailInputLayout, passwordInputLayout;
     private String loginPassword, loginEmail;
     private FirebaseAuth mAuth;
-    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +105,7 @@ public class LoginFacultyActivity extends AppCompatActivity implements TextWatch
     private void closeProgressDialog() {
         progressDialog.dismiss();
     }
+
     private boolean isValidEmail(String email) {
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             String domain = email.substring(email.indexOf('@') + 1);
@@ -121,4 +133,6 @@ public class LoginFacultyActivity extends AppCompatActivity implements TextWatch
         emailInputLayout.setError(null);
         passwordInputLayout.setError(null);
     }
+
+
 }
