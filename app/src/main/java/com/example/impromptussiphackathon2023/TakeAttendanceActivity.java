@@ -28,7 +28,7 @@ public class TakeAttendanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isSelectionValid()) {
-                    Intent intent = new Intent(getApplicationContext(), AttendanceReportActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), activity_session.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(TakeAttendanceActivity.this, "Please select all three options", Toast.LENGTH_SHORT).show();
